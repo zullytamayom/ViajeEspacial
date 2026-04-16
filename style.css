@@ -1,0 +1,481 @@
+html {
+    scroll-behavior: smooth;
+        height: 100%;
+}
+body {
+    margin: 0;
+    color: white;
+    font-family: Arial;
+ 
+    display: flex;
+    flex-direction: column;
+
+    transition: background 2s ease;
+    background: #000;
+   
+}
+
+
+.barraFrases {
+    overflow: hidden;
+    height: 3.5rem;
+    width: 100%;
+    position: relative;
+    /* Fondo con overlay oscuro para legibilidad */
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                url('https://images.unsplash.com/photo-1505506874110-6a7a69069a08?q=80&w=687&auto=format&fit=crop');
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.marquee-container {
+    display: flex;
+    width: 100%;
+}
+
+.frases {
+    display: flex;
+    white-space: nowrap;
+    /* Ajusta los segundos (40s) para más o menos velocidad */
+    animation: scrollInfinito 40s linear infinite;
+}
+
+.frases span {
+    display: inline-block;
+    padding: 0 4rem; /* Espacio entre frases */
+    color: #e0e0e0;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 300;
+    text-shadow: 0 0 10px rgba(255,255,255,0.3);
+}
+
+/* El truco de la magia: mover el contenedor exactamente la mitad */
+@keyframes scrollInfinito {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Pausar al pasar el mouse para que el usuario pueda leer con calma */
+.barraFrases:hover .frases {
+    animation-play-state: paused;
+}
+
+
+.banner {
+    height: 500px;
+    background-image: 
+        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+        url(https://i.postimg.cc/tRNtbdR8/Gemini-Generated-Image-qlfc9iqlfc9iqlfc.png);
+
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+
+
+.navbar-nav {
+    margin: 0 auto;
+    gap: 1.25rem;
+}
+
+.barraNavegacion {
+    text-align: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: #fff;
+    gap: 1rem;
+}
+
+.opcionesBarra {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 1.2rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#catalogo {
+    scroll-margin-top: 100px;
+}
+
+
+.rocket {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    color:blue;
+    opacity: 0;
+}
+
+.rocket.lanzar {
+    animation: fly 0.8s ease-out forwards;
+}
+
+@keyframes fly {
+  0% {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-200px);
+  }
+}
+
+
+/* --------------------------------------------------------------------- */
+/* panel para carrito */
+#offcanvasCarrito {
+    width: 21.8rem;
+    background-color: #111;
+    color: white;
+}
+
+#lista-carrito li {
+    padding: 1rem 0;
+    border-bottom: 1px solid #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#lista-carrito button {
+    background: red;
+    color: white;
+    border: none;
+    padding: 0.3rem 1rem;
+    cursor: pointer;
+    border-radius: 1.2rem;
+}
+
+
+.slider-intergalactico {
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    background: #000;
+}
+
+.slide-list .item {
+    width: 200px;
+    height: 300px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 20px;
+    background-position: center;
+    background-size: cover;
+    display: inline-block;
+    transition: 0.5s; 
+    box-shadow: 0 30px 50px #000;
+}
+
+
+.slide-list .item:nth-child(1),
+.slide-list .item:nth-child(2) {
+    top: 0;
+    left: 0;
+    transform: none;
+    border-radius: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+.slide-list .item:nth-child(3) { left: 50%; }
+.slide-list .item:nth-child(4) { left: calc(50% + 220px); }
+.slide-list .item:nth-child(5) { left: calc(50% + 440px); }
+.slide-list .item:nth-child(n+6) { left: calc(50% + 660px); opacity: 0; }
+
+
+.content {
+    position: absolute;
+    top: 50%;
+    left: 100px;
+    width: 300px;
+    text-align: left;
+    color: #eee;
+    transform: translateY(-50%);
+    font-family: 'Arial', sans-serif;
+    display: none; 
+}
+
+
+.slide-list .item:nth-child(2) .content {
+    display: block;
+}
+
+/* Animaciones de texto */
+.title { font-size: 40px; text-transform: uppercase; opacity: 0; animation: showcontent 1s ease-in-out 1 forwards; }
+.description { margin: 20px 0; opacity: 0; animation: showcontent 1s ease-in-out 0.3s 1 forwards; }
+.btn-cart { padding: 10px 20px; border: none; cursor: pointer; opacity: 0; animation: showcontent 1s ease-in-out 0.6s 1 forwards; }
+
+@keyframes showcontent {
+    from { opacity: 0; transform: translateY(100px); filter: blur(33px); }
+    to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+.nav-buttons {
+    position: absolute;
+    bottom: 50px;
+    width: 100%;
+    left: 0;          
+    text-align: center;
+    z-index: 20;      
+    display: flex;     
+    justify-content: center; 
+    gap: 20px;       
+}
+
+.nav-buttons button {
+    width: 50px; 
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    background: rgba(255, 255, 255, 0.2); /* Un fondo sutil para que se vean */
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.nav-buttons button:hover {
+    background: #fff;
+    color: #000;
+}
+
+.squad-card {
+    background-color: #19152f;
+    border: none;
+    border-radius: 0; /* Sin redondeo para look técnico */
+    transition: all 0.3s ease;
+}
+ 
+.squad-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(37, 33, 77, 0.3);
+    background-color: #1d1735;
+}
+ 
+.card-img-top {
+    border-radius: 0;
+    /* Ajuste para que todas las fotos tengan la misma proporción */
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    filter: grayscale(30%) contrast(110%);
+}
+ 
+.card-body {
+    padding: 1.25rem 1rem;
+}
+ 
+/* Tipografía de Integrantes */
+.member-id {
+    display: block;
+    color: #7247ff; /* Morado neón */
+    font-size: 0.7rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+ 
+.member-name {
+    font-size: 1.2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+    letter-spacing: 0.5px;
+}
+ 
+.member-role {
+    color: #8c8c8c;
+    font-size: 0.8rem;
+    margin-bottom: 0;
+}
+ 
+/* Línea decorativa superior */
+header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 15px;
+}
+
+
+
+
+#rocket-transition {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle, #0a0a1a 0%, #000000 100%);
+    display: none; /* Se activa con el .style.display = 'flex' del JS */
+    justify-content: center;
+    align-items: center;
+    z-index: 10000; /* Por encima de todo */
+    overflow: hidden;
+}
+
+.rocket {
+    font-size: 5rem;
+    filter: drop-shadow(0 0 15px rgba(0, 100, 255, 0.8));
+    transition: transform 0.1s;
+}
+
+
+.launching {
+    animation: spaceLaunch 1.2s ease-in forwards;
+}
+
+@keyframes spaceLaunch {
+    0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+    30% { transform: translateY(0) scale(1.2); opacity: 1; }
+    100% { transform: translateY(-120vh) scale(1.5); opacity: 0; }
+}
+
+
+.particula-espacial {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #a347ff;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+}
+
+.footer {
+    position: relative;
+    overflow: hidden;
+    min-height: 300px;
+    opacity: 0; 
+    transform: translateY(50px);
+    transition: all 0.8s ease-out;
+    background: #0a0a1a;
+    --color1: rgba(0, 100, 255, 0.3);
+    --color2: rgba(150, 0, 255, 0.3);
+}
+ 
+.footer.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+ 
+.footer::before {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+ 
+    background:
+        radial-gradient(circle at 20% 30%, var(--color1), transparent 40%),
+        radial-gradient(circle at 80% 70%, var(--color2), transparent 50%),
+        linear-gradient(270deg, #000, #020024, #000);
+ 
+    animation: galaxiaMovimiento 40s linear infinite;
+ 
+    z-index: -2;
+}
+ 
+.footer::after {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+ 
+    background-image: radial-gradient(white 1px, transparent 1px);
+    background-size: 40px 40px;
+ 
+    opacity: 0.2;
+ 
+    animation: estrellasMove 60s linear infinite;
+ 
+    z-index: -1;
+}
+.footer-container {
+    display: flex;
+    justify-content: space-around; /* Reparte las secciones con espacio entre ellas */
+    align-items: flex-start;
+    flex-wrap: wrap; /* Si la pantalla es pequeña, se ponen uno debajo de otro */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px 20px;
+    position: relative;
+    z-index: 5; /* Asegura que el texto esté por encima de las estrellas */
+}
+ 
+@keyframes galaxiaMovimiento {
+    0% { transform: translate(0,0); }
+    100% { transform: translate(-200px, -200px); }
+}
+ 
+@keyframes estrellasMove {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-500px); }
+}
+ 
+#nasa-content img {
+    width: 180px;
+    border-radius: 10px;
+    margin-top: 10px;
+    transition: transform 0.3s;
+}
+ 
+#nasa-content img:hover {
+    transform: scale(1.08);
+}
+
+
+/* MODAL DE LA COMPRA */
+
+.modal-content {
+    background: rgba(6, 5, 8, 0.95) !important; /* Tu morado oscuro */
+    backdrop-filter: blur(10px);
+    border: 2px solid #e2c7fd !important; /* Borde neón */
+    box-shadow: 0 0 20px rgba(208, 168, 248, 0.5);
+}
+
+.modal-header {
+    border-bottom: 1px solid rgba(163, 71, 255, 0.3) !important;
+}
+
+.modal-footer {
+    border-top: 1px solid rgba(163, 71, 255, 0.3) !important;
+}
+
+#precioPaquete {
+    text-shadow: 0 0 10px rgba(0, 123, 255, 0.8);
+    font-family: 'Roboto Mono', monospace;
+}
+
+.rocket-img {
+    filter: drop-shadow(0 0 10px #08151c);
+}
+
+.member-name{
+    color:#c3e5f7;
+}
